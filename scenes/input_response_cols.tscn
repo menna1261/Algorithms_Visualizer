@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://drg8amxj4kty0"]
+
+[ext_resource type="Script" path="res://scripts/input_response_cols.gd" id="1_f2vkx"]
+[ext_resource type="FontFile" uid="uid://dblhhw6ptaby7" path="res://fonts/Oswald-Regular.ttf" id="2_5chjn"]
+[ext_resource type="Texture2D" uid="uid://bb4o82he1tudx" path="res://631_750x750_Front_Color-White.jpg" id="3_a2ff8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8n01r"]
+content_margin_left = 30.0
+content_margin_top = 18.0
+content_margin_right = 30.0
+content_margin_bottom = 18.0
+bg_color = Color(0.635294, 0.490196, 1, 0)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="input_response_cols" type="HBoxContainer"]
+anchors_preset = -1
+anchor_left = -0.003
+anchor_right = -0.003
+offset_left = 540.456
+offset_top = 295.0
+offset_right = 657.456
+offset_bottom = 569.0
+size_flags_horizontal = 4
+script = ExtResource("1_f2vkx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(59, 60.432)
+scale = Vector2(0.157333, 0.161818)
+texture = ExtResource("3_a2ff8")
+
+[node name="d" type="Label" parent="Sprite2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -585.5
+offset_top = -653.0
+offset_right = -164.5
+offset_bottom = -97.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_5chjn")
+theme_override_font_sizes/font_size = 350
+theme_override_styles/normal = SubResource("StyleBoxFlat_8n01r")
+horizontal_alignment = 1
+vertical_alignment = 1

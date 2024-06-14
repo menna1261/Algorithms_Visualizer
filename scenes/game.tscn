@@ -1,0 +1,99 @@
+[gd_scene load_steps=9 format=3 uid="uid://dbn2fcne2kbxm"]
+
+[ext_resource type="FontFile" uid="uid://dblhhw6ptaby7" path="res://fonts/Oswald-Regular.ttf" id="1_af32l"]
+[ext_resource type="Script" path="res://scripts/LineEdit.gd" id="1_hothc"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_k0oco"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d58n5"]
+bg_color = Color(0.619608, 0.564706, 0.74902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_60ccy"]
+bg_color = Color(0.466667, 0.466667, 0.466667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vow50"]
+bg_color = Color(0.658824, 0.658824, 0.658824, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tamhy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wy2h8"]
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k0oco")
+
+[node name="Background" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d58n5")
+
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Rows" type="VBoxContainer" parent="Background/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="GameInfo" type="PanelContainer" parent="Background/MarginContainer/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_60ccy")
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/MarginContainer/Rows/GameInfo"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 100
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer/Rows/GameInfo/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 110
+alignment = 1
+
+[node name="InputArea" type="PanelContainer" parent="Background/MarginContainer/Rows"]
+custom_minimum_size = Vector2(2.08165e-12, 80)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vow50")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer/Rows/InputArea"]
+layout_mode = 2
+
+[node name="Caret" type="Label" parent="Background/MarginContainer/Rows/InputArea/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_af32l")
+theme_override_font_sizes/font_size = 36
+text = " > "
+
+[node name="LineEdit" type="LineEdit" parent="Background/MarginContainer/Rows/InputArea/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_af32l")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxEmpty_tamhy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wy2h8")
+placeholder_text = "Enter Your Numbers"
+script = ExtResource("1_hothc")
+
+[node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 939.0
+offset_top = 22.0
+offset_right = 1128.0
+offset_bottom = 58.0
+
+[connection signal="text_submitted" from="Background/MarginContainer/Rows/InputArea/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="text_submitted" from="Background/MarginContainer/Rows/InputArea/HBoxContainer/LineEdit" to="Background/MarginContainer/Rows/InputArea/HBoxContainer/LineEdit" method="_on_text_submitted"]
